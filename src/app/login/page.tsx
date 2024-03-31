@@ -20,11 +20,17 @@ export default function LoginPage() {
     e.preventDefault();
     try {
       setLoading(true);
-      const response = await axios.post("/api/users/login", details);
+      const response = await axios.post(
+        `/api/${accountType === "driver" ? "driver" : "users"}/login`,
+        details
+      );
+
       console.log("Login successful", response);
-      router.push("/booking");
-    } catch (error) {
-      console.log(error);
+      accountType === "driver"
+        ? router.push(`/dashboard/${details.email}`)
+        : router.push("/booking");
+    } catch (error: any) {
+      alert(error.response.data.error);
     } finally {
       setLoading(false);
     }
@@ -51,8 +57,8 @@ export default function LoginPage() {
             onChange={(e) => setAccountType(e.target.value)}
           >
             <option value="Select User Type">Select user Type</option>
-            <option value="Employee">Employee</option>
-            <option value="Driver">Driver</option>
+            <option value="employee">Employee</option>
+            <option value="driver">Driver</option>
           </select>
           <label
             htmlFor="shift_time"

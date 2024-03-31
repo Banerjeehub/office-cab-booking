@@ -7,6 +7,10 @@ const bookingSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  bookingTime: {
+    type: Date,
+    required: true,
+  },
   pickTime: {
     type: Date,
     required: true,
@@ -15,11 +19,27 @@ const bookingSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
+  firstName: {
+    type: String,
+    required: true,
+  },
+  lastName: {
+    type: String,
+    required: true,
+  },
   email: {
     type: String,
     required: true,
   },
   mobileNumber: {
+    type: String,
+    required: true,
+  },
+  bookingStatus: {
+    default: true,
+    type: Boolean,
+  },
+  driverId: {
     type: String,
     required: true,
   },

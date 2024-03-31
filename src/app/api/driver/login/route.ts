@@ -10,10 +10,13 @@ export async function POST(request: NextRequest) {
     const reqBody = await request.json();
     const { email, password } = reqBody;
 
-    const user = await Users.findOne({ email, isDriver: false });
+    const user = await Users.findOne({ email, isDriver: true });
 
     if (!user) {
-      return NextResponse.json({ error: "User not found" }, { status: 404 });
+      return NextResponse.json(
+        { error: "User not found or You are not a driver" },
+        { status: 404 }
+      );
     }
 
     //validate user
@@ -44,6 +47,9 @@ export async function POST(request: NextRequest) {
     });
 
     response.cookies.set("tokenOne", tokenOne, {
+      httpOnly: true,
+    });
+    response.cookies.set("accountType", "Driver", {
       httpOnly: true,
     });
 

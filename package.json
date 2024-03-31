@@ -11,13 +11,16 @@
   "dependencies": {
     "axios": "^1.6.8",
     "bcryptjs": "^2.4.3",
+    "generate-unique-id": "^2.0.3",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.2.2",
     "next": "14.1.4",
     "nodemailer": "^6.9.13",
+    "otp-generator": "^4.0.1",
     "react": "^18",
     "react-dom": "^18",
     "react-loading-screen": "^0.0.17",
+    "react-router-dom": "^6.22.3",
     "style-loader": "^3.3.4",
     "vercel": "^33.6.1"
   },
